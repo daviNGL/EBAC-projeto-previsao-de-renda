@@ -213,6 +213,8 @@ ax = sns.heatmap(df.select_dtypes('number').corr(),
                 annot=True, 
                 cmap='coolwarm')
 
+figura.subplots_adjust(hspace=0.5)
+
 st.pyplot(plt)
 
 
@@ -229,7 +231,10 @@ sns.barplot(data = df, x = 'educacao', y = 'renda', errorbar=('ci', 95), ax = ax
 sns.barplot(data = df, x = 'estado_civil', y = 'renda', errorbar=('ci', 95), ax = ax3)
 sns.barplot(data = df, x = 'tipo_residencia', y = 'renda', errorbar=('ci', 95), ax = ax4)
 
-ax2.set_xticklabels(ax2.get_xticklabels(), rotation=15)
+
+ax1.set_xticklabels(ax1.get_xticklabels(), rotation=20)
+ax2.set_xticklabels(ax2.get_xticklabels(), rotation=30)
+ax4.set_xticklabels(ax4.get_xticklabels(), rotation=20)
 
 ax1.set_xlabel("")
 ax2.set_xlabel("")
@@ -241,6 +246,6 @@ ax2.set_title("Renda média por nível de educação")
 ax3.set_title("Renda média por estado civil")
 ax4.set_title("Renda média por tipo de residência")
 
-figura.subplots_adjust(hspace=0.3)
+figura.subplots_adjust(hspace=1)
 
 st.pyplot(plt)
