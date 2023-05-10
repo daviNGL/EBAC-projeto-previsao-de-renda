@@ -18,6 +18,8 @@ st.write('# Análise exploratória da previsão de renda')
 
 df = pd.read_csv('./input/previsao_de_renda.csv')
 
+df.drop(["Unnamed: 0", "index"], axis=1, inplace=True)
+
 #======================================================================================================
 
 st.markdown("#### Escolha o período a ser análisado:")
