@@ -6,14 +6,33 @@ import streamlit as st
 sns.set(context='talk', style='ticks')
 
 st.set_page_config(
-     page_title="???????",
-     page_icon=":?:",
+     page_title="Análise Exploratória - Previsão de Renda",
+     page_icon="./input/icon.png",
      layout="wide",
 )
+
+
+#======================================================================================================
 
 st.write('# Análise exploratória da previsão de renda')
 
 df = pd.read_csv('./input/previsao_de_renda.csv')
+
+#======================================================================================================
+
+st.markdown("#### Escolha o período a ser análisado:")
+
+df['data_ref'] = pd.to_datetime(df['data_ref'])
+
+data_minima = data_minima = df['data_ref'].min()
+data_maxima = data_maxima = df['data_ref'].max()
+
+min_selecionado = st.date_input(label = "Data Inicial", min_value=data_minima, max_value=data_maxima, value=data_minima)
+max_selecionado = st.date_input(label = "Data Final", min_value=data_minima, max_value=data_maxima, value=data_maxima)
+
+st.write(min_selecionado, max_selecionado)
+
+df = df[ (df['data_ref'] >= pd.to_datetime(min_selecionado)) & (df['data_ref'] <= pd.to_datetime(max_selecionado)) ].copy()
 
 
 #======================================================================================================
